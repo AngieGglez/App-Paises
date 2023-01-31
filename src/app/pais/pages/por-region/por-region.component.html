@@ -1,0 +1,51 @@
+<div class="animate__animated animate__faster">
+<h3>Buscar por región <small> {{regionActiva | titlecase}} </small></h3>
+<!-- | titlecase sirve para capitalizar el texto  -->
+<hr>
+
+<h5>Seleccione la región</h5>
+
+<!-- 
+1ª FORMA:
+
+[class.btn-primary] = "region === regionActiva"
+
+Opción para poner un if o condicional en las clases y que tome un estilo u otro. En este caso el boton tendría la clase  class="btn btn-outline-primary"
+y si "region === regionActiva" es true o verdad (se puede ver inspeccionando el elemento ) asigna [class.btn-primary] 
+otra opción es:
+
+2ª FORMA:
+
+[ngClass] = "{
+                    'clases de css',
+                    'clases de css'
+                }"
+
+[ngClass] = "{
+                    'btn-primary': regionActiva === region,
+                    'btn-online-primary': regionActiva !== region
+                }"
+
+3ª FORMA:
+                [class]= "getClaseCSS( region )" y llamar al metodo en el ts
+-->
+<div class="row">
+    <div class="col">
+        <button *ngFor="let region of regiones"
+                class="btn btn-outline-primary"
+                [class]= "getClaseCSS( region )"
+                (click) = "activarRegion( region )">
+                <!-- Evento click que acgiva la función activarRegion y se le manda como argumento la región activa en ese momento-->
+            {{region | titlecase}}
+        </button>
+    </div>
+</div>
+
+<div *ngIf="paises.length >0 " class="row">
+    <div class="col">
+        <!-- [paises]="paises" para enviarle los paises al modulo pais-tabla como parametro -->
+        <app-pais-tabla [paises]="paises"></app-pais-tabla>
+    </div>
+</div>
+</div>
+

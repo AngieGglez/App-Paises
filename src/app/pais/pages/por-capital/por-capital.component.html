@@ -1,0 +1,35 @@
+<div class="animate__animated animate__faster">
+<h2>Por Capital</h2>
+<hr>
+
+<div class="row">
+    <div class="col">
+        <!--  -->
+        <app-pais-input
+        (onEnter) = "buscar ( $event )"
+        placeholder="Buscar capital..."> 
+        </app-pais-input>
+        <!-- El evento  (onDebounce) se va a lanzar cuando se presione una tecla -->
+        <!-- Placeholder va a ser una nueva propiedad que se manda al input:  
+            Si se mandan con llaves [placeholder]="" quiere decir que se manda el valor de una variable
+        Si se manda sin las llaves quiere decir que se manda un string -->
+    </div>
+</div>
+
+<hr>
+</div>
+
+<!-- Para mostrar lo que se escribe en el input {{termino}} -->
+<div *ngIf="hayError" 
+    class="alert alert-danger">
+    No se encontó nada con el término {{termino}}
+</div>
+
+<!-- Si no hay error se muestra la tabla -->
+<div *ngIf="paises.length >0 " class="row">
+    <div class="col">
+        <!-- [paises]="paises" para enviarle los paises al modulo pais-tabla como parametro -->
+        <app-pais-tabla [paises]="paises"></app-pais-tabla>
+    </div>
+</div>
+

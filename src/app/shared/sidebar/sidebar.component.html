@@ -1,0 +1,24 @@
+<h2>Búsquedas</h2>
+        <hr>
+        <!-- routerLink="" para que redirija al home
+             routerLinkActive="active" para que marque con sombreado la ruta activa en ese momento
+             [routerLinkActiveOptions]="{ exact: true }" para que  marque la ruta exacta vacia, ya que este caso es el comienzo de las dem´ñas y aparece siempre seleccionada
+         -->
+        <ul class="list-group">
+            <li routerLink=""
+                routerLinkActive="active"
+                [routerLinkActiveOptions]="{ exact: true }"
+                class="list-group-item">
+                Buscar País
+            </li>
+            <li routerLink="region"
+                routerLinkActive="active"
+                class="list-group-item">
+                Por Región
+            </li>
+            <li routerLink="capital"
+                routerLinkActive="active"
+                class="list-group-item">
+                Por Capital
+            </li>
+        </ul>
